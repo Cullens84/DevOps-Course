@@ -1,26 +1,26 @@
 from flask import Flask
 from flask import render_template, request, redirect, url_for, session, logging, jsonify
-# from flask_mysqldb import MySQL
+# this just imports modules then class functions from those modules
 
 app = Flask(__name__)
-# mysql = MySQL()
+#creating the object app and telling flask to execute it with the required name from __main__
 
 def validation(name, password):
    pass
-
+#making a definition but using the pass option to overlook it but its there as a placeholder for future use
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html"), 404
-
+# decorator for app error handler from flask, as it sounds its an error handler with a stated return
 
 @app.route('/')
 def index():
-    # Got to database and select a list of name
-    # fileter that list for the name starting with S and ending with k and then pass that to our page.
+# decorator for app route, the root (/) of the page will return the stated return statement
     return render_template("index.html", name="Siamak")
-
+#above we referance another file in the return statement to prevent our main code being blown up with html text
 
 @app.route('/validate', methods=['GET', 'POST'])
+#this decorator for app route at file validate employs the get and post for the site pages.
 def validate():
     if request.method == 'POST':
         first_name = request.form['fname']
@@ -29,7 +29,7 @@ def validate():
         pass
     
     return "Otherwise"
-
+# another decorator for the app with a if, elif, pass and return statement
 @app.route('/login')
 def login():
     return """
@@ -52,8 +52,8 @@ def login():
         </body>
         </html>
     """
-
+#here we have the html text in the main code file but this could be stored else where and referanced into the code as in line 19
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
-
+# this runs the app, host is set to open to all through port 500.
