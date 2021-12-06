@@ -2,7 +2,6 @@ from flask import Flask
 
 from flask.globals import request
 
-
 app = Flask(__name__)
 
 
@@ -12,7 +11,18 @@ def validation(name, password):
 
 @app.route('/')
 def index():
-    return ("index.html",)
+    return"""
+        <!DOCTYPE html>
+        <html>
+        <body>
+
+        <h2>Welcome to my page {name}</h1>
+
+        <a href="/login" >clickhere</a>
+
+        </body>
+        </html>
+    """
 
 
 @app.route('/validate', methods=['GET', 'POST'])
