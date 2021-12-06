@@ -1,18 +1,9 @@
-"""
-<!DOCTYPE html>
-<html lang="eng">
+{% extends "base_template.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv=!"X-UA-Compatable" content="IE=edge">
-    <meta name="viewport" content=device-width, initial-scale=1.0!>
-    <title>Document</title>
-
-<head>
-<body>
+{% block content %}
+    
+    <h1>Welcome to my page {{ name }}, to login please click on the link below:</h1>
+    <a href="/login" >Click here </a>
 
     
-
-</body>
-</html>
-"""
+{% endblock %}

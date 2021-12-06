@@ -1,28 +1,23 @@
 from flask import Flask
-
-from flask.globals import request
+from flask import render_template, request, redirect, url_for, session, logging, jsonify
+# from flask_mysqldb import MySQL
 
 app = Flask(__name__)
-
+# mysql = MySQL()
 
 def validation(name, password):
-    pass
+   pass
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
 
 
 @app.route('/')
 def index():
-    return"""
-        <!DOCTYPE html>
-        <html>
-        <body>
-
-        <h2>Welcome to my page {name}</h1>
-
-        <a href="/login" >clickhere</a>
-
-        </body>
-        </html>
-    """
+    # Got to database and select a list of name
+    # fileter that list for the name starting with S and ending with k and then pass that to our page.
+    return render_template("index.html", name="Siamak")
 
 
 @app.route('/validate', methods=['GET', 'POST'])
@@ -32,9 +27,8 @@ def validate():
         return f"Hello {first_name}"
     elif request.method == 'GET':
         pass
-
+    
     return "Otherwise"
-
 
 @app.route('/login')
 def login():
@@ -62,3 +56,4 @@ def login():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
+
